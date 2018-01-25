@@ -37,7 +37,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
             <button type="button" class="btn btn-default" onClick="location.href='Register.php'" onFocus="Register.php" id="reg">Register</button>
             </div>
-   
+   <!-- huha --->
     </div>
   </form>
      
