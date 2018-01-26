@@ -1,47 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Login Page</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+<?php
+require("pages/layout.php");
 
-<div class="container">
-  <h2>Login form</h2>
-  <form class="form-horizontal" action="Logincheck.php" method="post">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-10">          
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-            <button type="button" class="btn btn-default" onClick="location.href='Register.php'" onFocus="Register.php" id="reg">Register</button>
-            </div>
-   <!-- huha --->
-    </div>
-  </form>
-     
-  
-</div>
-</body>
-</html>
+// logged in user try to access this page
+if (!empty($_SESSION['id']))
+{
+	echo "<script>location.href='index.php';</script>";
+	exit;
+}
+
+// display the login page
+renderPage("login");
+
+/**
+ Authenticating the user
+ */
+ 
+ // form is submitted to server
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		require("dbconfig.php");
+
+		// Create connection
+		$conn = new mysqli($host, $username, $password, $dbname);
+		// Check connection
+		if ($conn->connect_error) {
+		    die("Connection failed: " . $conn->connect_error);
+		}
+
+		// https://www.w3schools.com/php/php_form_validation.asp
+		// sanatizing the input
+		function test_input($data) {
+			$data = trim($data);
+			$data = stripslashes($data);
+			$data = htmlspecialchars($data);
+			return $data;
+		}
+
+		// Querying the database
+		$username = test_input($_POST["username"]);
+		$password = crypt($_POST["password"], 50);
+
+		$sql = 'SELECT * FROM users where uname = "'.$username. '" AND hash = "'.$password.'"';
+		$result = $conn->query($sql);
+
+		// if the data is fake
+		$data = $result->fetch_assoc();
+		if (empty($data)){
+			echo '<script language="javascript">';
+           	echo 'window.alert("Invalid Username Or Password")';
+           	echo '</script>';
+		}
+
+		// all goes well then
+		$_SESSION['id'] = $data['id'];
+		$_SESSION['name'] = $data['uname'];
+		echo "<script>location.href='index.php';</script>";
+	}
+?>
