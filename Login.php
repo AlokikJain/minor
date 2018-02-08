@@ -1,5 +1,5 @@
 <?php
-require("pages/layout.php");
+require_once("pages/layout.php");
 
 // logged in user try to access this page
 if (!empty($_SESSION['id']))
@@ -38,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	// Querying the database
 	$email = test_input($_POST["email"]);
-	$password = htmlspecialchars($_POST["pwd"]);
+	$pwd = htmlspecialchars($_POST["pwd"]);
 
-	$sql = 'SELECT * FROM doctor where email = "'.$email. '" AND password = "'.$password.'"';
+	$sql = 'SELECT * FROM doctor where email = "'.$email. '" AND password = "'.$pwd.'"';
 	$result = $conn->query($sql);
 
 	// if the data is fake

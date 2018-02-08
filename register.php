@@ -1,5 +1,5 @@
 <?php
-require("pages/layout.php");
+require_once("pages/layout.php");
 
 // logged in user try to access this page
 if (!empty($_SESSION['id']))
@@ -26,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		return $data;
 	}
 	
-	$username = test_input($_POST["name"]);
-	$password = htmlspecialchars($_POST["pwd"]);
+	$name = test_input($_POST["name"]);
+	$pwd = htmlspecialchars($_POST["pwd"]);
 	$number = test_input($_POST["number"]);
 	$email = test_input($_POST["email"]);
 	$regId = test_input($_POST["Rid"]);
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 
 	// saving it to db  "SQL INJECTION PRONE!"
-    $sql = 'INSERT INTO doctor (name, email, number, regId, password) VALUES ("'.$name.'","' .$email.'","' .$number.'","' .$regId.'","' .$password.'")';
+    $sql = 'INSERT INTO doctor (name, email, number, regId, password) VALUES ("'.$name.'","' .$email.'","' .$number.'","' .$regId.'","' .$pwd.'")';
     if (mysqli_query($conn, $sql)) {
     	$last_id = mysqli_insert_id($conn);
 	} else {

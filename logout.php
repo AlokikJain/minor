@@ -1,5 +1,5 @@
 <?php
- require("pages/layout.php");
+ require_once("pages/layout.php");
  $_SESSION['id'] = '';
  $_SESSION['name'] = '';
  session_destroy();

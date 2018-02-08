@@ -1,5 +1,5 @@
 <?php
-require("pages/layout.php");
+require_once("pages/layout.php");
 
 // Checking the login status of user
 if(empty($_SESSION['id']))
