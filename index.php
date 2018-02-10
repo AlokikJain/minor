@@ -8,7 +8,10 @@ if(empty($_SESSION['id']))
 	exit;
 }
 
+/**			NOT WORKING ☻☻☻☻
 // on successful login
-renderPage("search", ["title"=>"Prescription"]);
+renderPage("patientDetails");
 
+*/
+include("pages/patientDetails.php");
 ?>
