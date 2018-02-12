@@ -9,6 +9,9 @@ if(empty($_SESSION['id']))
 }
 
 // on successful login
-renderPage("search", ["title"=>"Prescription"]);
+
+//renderPage("pdetails"); not working☻
+
+require("pages/pdetails.php");
 
 ?>

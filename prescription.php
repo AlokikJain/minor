@@ -1,9 +1,11 @@
 <?php
 
-require_once("pages/layout.php");
-
+// this 'if' make sure that on ajax call to this file following html won't interfere on return data
 if ($_SERVER["REQUEST_METHOD"] == "GET")
-renderPage("prescription");
+{
+	require_once("pages/layout.php");
+	renderPage("prescription");
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -21,30 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$result = $conn->query($sql);
 
 
-	echo "<ul>";
-
-//Fetching result from database.
-
-while($Result = $result->fetch_assoc()) {
-
-?>
-<li onclick='fill("<?php echo $Result['Name']; ?>")'>
-
-<a>
-
-<!-- Assigning searched result in "Search box" in "search.php" file. -->
-
-<?php echo $Result['Name']; ?>
-
-</li></a>
-
-<!-- Below php code is just for closing parenthesis. Don't be confused. -->
-
-<?php
-
-}}
-
+	//Fetching result from database.
+	$string = '';
+	while($Result = $result->fetch_assoc()) {
+		$string = $string . " <option>". $Result['Name'] . "</option>";
+	}
+	echo $string;
+}
 
 ?>
 
-</ul>
