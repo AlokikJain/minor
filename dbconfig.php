@@ -1,7 +1,7 @@
 <?php
 // db connection parameters
-	$host = 'localhost';
-	$dbname = 'autocomplete';
-	$username = 'root';
-	$password = '';
+	$host = 'ricky.heliohost.org';
+	$dbname = 'enginerd_db';
+	$username = 'enginerd_user';
+	$password = 'EngiNerds';
 ?>

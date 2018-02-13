@@ -7,7 +7,7 @@
 	
     <div class="form-group">
       <label for="number">Patient's Contact no:</label>
-      <input type="text" class="form-control" placeholder="Contact Details" name="contact" required>
+      <input type="number" class="form-control" placeholder="Mobile Number" name="contact" required>
     </div>
 	
     <button type="submit" class="btn btn-primary">Next</button>
