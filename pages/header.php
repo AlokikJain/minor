@@ -41,7 +41,7 @@
 									<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-camera"></span> Hey <?php echo $_SESSION["name"]; ?>!
 									<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="logout.php">Log Out</a></li>
+										<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
 										<li><a href="#">Waiting to be discover</a></li>
 										
 									</ul>

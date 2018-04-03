@@ -19,14 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 
 	$Name = $_POST['search'];
-	$sql = 'SELECT Name FROM search WHERE Name LIKE"'.$Name. '%"';
+	$sql = 'SELECT id,Name FROM search WHERE Name LIKE"'.$Name. '%"';
 	$result = $conn->query($sql);
 
 
 	//Fetching result from database.
 	$string = '';
 	while($Result = $result->fetch_assoc()) {
-		$string = $string . " <option>". $Result['Name'] . "</option>";
+		$string = $string . " <option id='" . $Result['id']. "'>". $Result['Name'] . "</option>";
 	}
 	echo $string;
 }
