@@ -11,7 +11,9 @@
         <!-- documentation at http://getbootstrap.com/, alternative themes at https://www.bootstrapcdn.com/bootswatch/ -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
-
+        <!-- site's own stylesheet -->
+		<link href="static/style.css" rel="stylesheet"/>
+		
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
@@ -21,7 +23,7 @@
 
     <body>
 
-        <div class="container">
+        <div class="container-fluid">
 			<!-- start of nav bar -->
             <nav class="navbar navbar-default">
                 <div class="container-fluid">

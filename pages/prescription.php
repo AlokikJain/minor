@@ -1,4 +1,4 @@
-<script type="text/javascript" src="scripts/liveSearch.js"></script>
+<script type="text/javascript" src="static/prescription.js"></script>
 
 <form>
   <div class="form-group">
@@ -9,7 +9,7 @@
     <select multiple class="form-control" id="list">    </select>
         
 
-    <label>Dose/Day:</label><br>
+    <br><label>Dose/Day:</label><br>
     
   	 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
   	 <label class="form-check-label" for="inlineRadio1">1</label>
@@ -25,7 +25,7 @@
   	 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4">
   	 <label class="form-check-label" for="inlineRadio4">4</label><br>
   	
-    <label for="duration">Duration</label>
+    <br><label for="duration">Duration</label>
     <input type="number" class="form-control" min="0" id="duration" name="duration" placeholder="0"><br>
 
       <button type="button" class="btn btn-primary col-sm-offset-5" id="addon">Add</button><br><br>

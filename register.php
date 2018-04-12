@@ -14,7 +14,6 @@ renderPage("register");
 /**
  Authenticating the user
  */
- 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	// https://www.w3schools.com/php/php_form_validation.asp
@@ -43,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	// saving it to db  "SQL INJECTION PRONE!"
     $sql = 'INSERT INTO doctor (name, email, number, regId, password) VALUES ("'.$name.'","' .$email.'","' .$number.'","' .$regId.'","' .$pwd.'")';
-    if (mysqli_query($conn, $sql)) {
+    if ($conn->query($sql)) {
     	$last_id = mysqli_insert_id($conn);
 	} else {
     	echo "Error: " . $sql . "<br>" . mysqli_error($conn);

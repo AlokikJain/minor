@@ -4,6 +4,12 @@
 if ($_SERVER["REQUEST_METHOD"] == "GET")
 {
 	require_once("pages/layout.php");
+	// if the user isn't signed in, throw them to login page
+	if(empty($_SESSION['id']))
+	{
+		echo "<script>window.location.replace('login.php');</script>";
+		exit;
+	}
 	renderPage("prescription");
 }
 

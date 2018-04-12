@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Responding to ajax call
+// Responding to ajax call for saving the prescription
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$medicine = $_POST["medicine"];
@@ -24,37 +24,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	
 	// get the ID of user by the patient number
 	$query1 = "SELECT _id FROM userinfo WHERE Phone =". $patientNumber;
-	$result = $con->query($query1);
-    $row = $result->fetch_assoc();
-    $var1 = $row["_id"];
 
-    // TODO : if the number is not registered(new user) , first add them to database
+	$result = $con->query($query1);				// execute the query
+    $row = $result->fetch_assoc();				// this will fetch the result(containing multiple rows) into associative array
+    $patientId = $row["_id"];	
     
+
     // Store the record of patient visits
-	$query2 = 'INSERT INTO user_pres(Userid,Date,Doctor) VALUES("' .$var1. '","'. $date. '","' . $doctor .'")';
+	$query2 = 'INSERT INTO user_pres(Userid,Date,Doctor) VALUES("' .$patientId. '","' .$date. '","' .$doctor.'")';
+
 	if ($con->query($query2) === FALSE) {
 	    echo "Error2: " . $conn->error;
 	}
 
+
 	// get the last id from user_pres table
-	$var2 =  mysqli_insert_id($con);
+	$prescriptionId =  mysqli_insert_id($con);
 	
 	// iteratively adding the medicines to the Medicines table
 	for ($i = 0, $len = count($duration); $i < $len; $i++){
-	    $query4 = 'INSERT INTO Medicines VALUES("' . $var2 .'","' .$medicine[$i] .'","'. $dose[$i] . '","' . $duration[$i] .'")';
+
+	    $query4 = 'INSERT INTO Medicines VALUES("' .$prescriptionId. '","' .$medicine[$i]. '","' .$dose[$i]. '","' .$duration[$i]. '")';
 	    if ($con->query($query4) === FALSE) {
-	    echo "Error: " .  $conn->error;
+	    	echo "Error: " .  $conn->error;
 		}
 	}
 	    
-		// all goes well then
-		mysqli_close($con);
-		
-		// removing the patient details
-		unset($_SESSION['pname']);
-		unset($_SESSION['pcontact']);
-		
-		echo "voila!";
-	}
+	// all goes well then
+	mysqli_close($con);
+	
+	// removing the patient details
+	unset($_SESSION['pname']);
+	unset($_SESSION['pcontact']);
+	
+	echo "prescription saved!";
+}
 
 ?>
