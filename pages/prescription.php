@@ -48,3 +48,34 @@
   </table>
 
 <button type="submit" class="btn btn-primary col-sm-offset-5" id="prescribe">Confirm</button>  
+
+<div id ="DivIdToPrint">
+	<h3 style="font-weight: bolder;">Prescription</h3>
+	<br><hr><br>
+
+	<h4 style="font-weight: bold;">Patient Details: </h4>
+	<div id="patientDetails">
+		<?php echo $_SESSION['pname']; ?>
+		<br>
+		<?php echo $_SESSION['pcontact']; ?> <br>
+	</div>
+	<hr>
+	<h4 style="font-weight: bold;">Prescribed by: </h4>
+	<span id="doctorName"> <?php echo $_SESSION['name']; ?> </span>
+	<br>
+	<span id="date"> <?php date_default_timezone_set("Asia/Kolkata"); ?>Date: <?php echo date("d-m-Y"); ?> <span id=time>Time : <?php date_default_timezone_set("Asia/Kolkata"); ?>
+		<?php echo date("h:i:sa"); ?> </span></span>
+
+	<hr>
+	<table class="table table-striped" id="print-table">
+      <thead></thead>
+	  <tbody>
+	    
+	  </tbody>
+	</table>
+	<div id="justforfun">Thanks for visitng! </div>
+	<div id="bottom">
+		<button class="btn btn-primary col-sm-offset-2" id="new_patient">Continue</button>
+		<button class="btn btn-primary col-sm-offset-7" id="print_prescription">Print</button>	
+	</div>
+</div>

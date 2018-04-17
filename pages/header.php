@@ -51,8 +51,8 @@
                             </ul>
                         <?php else: ?>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                                <li><a href="register.php" ><span class="glyphicon glyphicon-user"></span> Register</a></li>
                             </ul>
                         <?php endif ?>
                     </div>

@@ -2,6 +2,14 @@
 
 session_start();
 
+if ($_SERVER["REQUEST_METHOD"] == "GET")
+{
+	require_once("pages/header.php");
+	require_once("pages/pdetails.php");
+	require_once("pages/footer.php");
+}
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$_SESSION['pname'] = $_POST["name"];
@@ -20,13 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	if (isset($_POST['next']))
 	{
 		// checks weather the user is registered or not
-		$sql = 'SELECT Phone FROM userinfo WHERE Phone LIKE"'. $_POST["contact"] . '" LIMIT 1';
+		$sql = 'SELECT Name,Phone FROM userinfo WHERE Phone LIKE"'. $_POST["contact"] . '" LIMIT 1';
 		$result = $conn->query($sql);
-		//$result = $result->fetch_assoc();
+		
 
 		// if it exist no problem else insist them to register
-		if ($result->num_rows > 0)
+		if ($result->num_rows > 0){
+			$result = $result->fetch_assoc();
+			$_SESSION['pname'] = $result['Name'];
 			echo 1;		// it's there in record
+		}
 		else
 			echo 0;		// patient not exists
 	}

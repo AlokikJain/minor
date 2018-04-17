@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="register.php" method="post">
+<form class="form-horizontal" action="register.php" method="post" style="padding:40px;">
   <fieldset>
 	<div class="form-group">
       <label class="control-label col-sm-2" for="name">Name</label>

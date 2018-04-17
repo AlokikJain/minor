@@ -1,10 +1,10 @@
 footer{
-    position:relative;
+    position:fixed;
     bottom:0;
     padding-left:25px;
-    width:100%;
+    width:-webkit-fill-available;
     height:35px;   /* Height of the footer */
-    background:#e53935;
+    background:rgb(255,82,82);
 }
 .navbar-default .navbar-brand{
     color:#e53935;
@@ -14,16 +14,19 @@ footer{
 .publisher{
     color:ghostwhite;
     font-family:cursive;
-	font-size:medium;
+    font-size:medium;
 }
 body {
     overflow:auto;
     margin:0;
-    margin-color:e53935;
 }
 main {
-    padding:10px;
+    padding-top:10px !important;
     height:100%;
+    overflow:scroll;
+    width:-webkit-fill-available;
+    position:fixed;
+    background:url('background.png')  no-repeat;
     padding-bottom:195px;   /* Height of the footer */
 }
 #footer-content{
@@ -42,3 +45,114 @@ main {
     left:70%;
     color:antiquewhite;     
 }
+
+
+
+
+  /* prescription print page */
+  hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #ccc;
+    margin: 1em 0em;
+    padding: 0; 
+
+  }
+  hr:first-of-type{
+    border-top: 4px solid #f18888;
+    padding-left:10px;
+  }
+  #DivIdToPrint{
+    display:block;
+    position:fixed;
+    height:98%;
+    width:-webkit-fill-available;
+    margin:10px;
+    border-style: groove;
+    overflow: scroll;
+    height:-webkit-fill-available;
+    padding:20px;
+ 
+  }
+  #bottom{
+    display: inline-flex;
+    top:98%;
+    padding-top: 200px;
+  }
+  #patientDetails, #doctorName, #date{
+    padding-left:8px;
+    text-transform: capitalize;
+    letter-spacing:0.8px;
+    font-size:14px;
+    font-family:sans-serif;
+  }
+  #doctorName{
+    font-weight:bold;
+    text-transform:uppercase;
+  }
+  #time{
+    float:right;
+    padding-right:8px;
+  }
+  #print-table{
+    padding-top:50px;
+    overflow:-webkit-paged-y;
+  }
+  #justforfun{
+    position:fixed;
+     top:98%;
+     justify-content:baseline;
+     color:steelblue;
+     left:45%
+  }
+
+  /* for the index page */
+  @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+  #header_msg{
+    color:#3991ec;
+
+    font-size:x-large;
+    font-weight:bold;
+
+    font-family: 'Josefin Sans', sans-serif;
+
+  }
+  #intro{
+    font-family: 'Josefin Sans', sans-serif;
+    padding:10px;
+    padding-right:inherit;
+    display:inline-block;
+    word-spacing:2px;
+    letter-spacing:1px;
+    color:#676666;
+    padding-bottom:350px;
+  }
+  #goahead{
+    float: right;
+    background-color:#ec8e61c7;
+    padding-right:30px;
+    height:40px;
+    text-align:-webkit-right;
+    font-size:20px;
+    padding:5px;
+    color:whitesmoke;
+    text-shadow: 1px 1px #7d7575;
+  }
+  #goahead:hover{
+    background-color:#ec8e61;
+    text-align:-webkit-center;
+  }
+  #qu{
+    color:darkgreen;
+    font-size:x-large;
+  }
+  .modal-header, .close {
+      background-color: rgb(255,82,82);
+      color:white !important;
+      text-align: center;
+      font-size: 40px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }

@@ -10,7 +10,7 @@ if (!empty($_SESSION['id']))
 
 // display the registeration page
 renderPage("register");
-
+require_once("pages/login.php");
 /**
  Authenticating the user
  */
