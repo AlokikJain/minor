@@ -1,3 +1,13 @@
+<?php
+/* // to prevent a mobile user to access site :) 
+if(preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"])){
+    // Do something for only mobile users
+    header('Location: http://viralviralvideos.com/wp-content/uploads/GIF/2015/04/Please-dont-do-it-GIF.gif');
+}
+//https://m.youtube.com/watch?v=ps6TLpdtrWM
+*/
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -25,7 +35,7 @@
 
         <div class="container-fluid">
 			<!-- start of nav bar -->
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
@@ -34,9 +44,10 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.php">NameLess</span></a>
+                        <a class="navbar-brand" href="index.php">MedNetwork</span></a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar">
+                        <!-- if the user is logged in show them logout button -->
                         <?php if(!empty($_SESSION['id'])): ?>
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
@@ -49,6 +60,7 @@
 									</ul>
 								</li>
                             </ul>
+                            <!-- else show them the login and reister button -->
                         <?php else: ?>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>

@@ -1,4 +1,8 @@
 <?php
+/**
+* Saves the prescription of user to the database
+*/
+
 session_start();
 
 // Responding to ajax call for saving the prescription
@@ -23,14 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 	
 	// get the ID of user by the patient number
-	$query1 = "SELECT _id FROM userinfo WHERE Phone =". $patientNumber;
+	$query1 = "SELECT _id FROM userinfo WHERE Phone =" . $patientNumber;
 
 	$result = $con->query($query1);				// execute the query
     $row = $result->fetch_assoc();				// this will fetch the result(containing multiple rows) into associative array
     $patientId = $row["_id"];	
     
 
-    // Store the record of patient visits
+    // Store the record of patient visit
 	$query2 = 'INSERT INTO user_pres(Userid,Date,Doctor) VALUES("' .$patientId. '","' .$date. '","' .$doctor.'")';
 
 	if ($con->query($query2) === FALSE) {
@@ -57,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	unset($_SESSION['pname']);
 	unset($_SESSION['pcontact']);
 	
-	echo "prescription saved!";
+	// echo "prescription saved!";
 }
 
 ?>

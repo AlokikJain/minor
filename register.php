@@ -1,7 +1,7 @@
 <?php
 require_once("pages/layout.php");
 
-// logged in user try to access this page
+// logged in user try to access this page, ignore them
 if (!empty($_SESSION['id']))
 {
 	echo "<script>location.href='index.php';</script>";
@@ -11,6 +11,7 @@ if (!empty($_SESSION['id']))
 // display the registeration page
 renderPage("register");
 require_once("pages/login.php");
+
 /**
  Authenticating the user
  */
@@ -30,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$number = test_input($_POST["number"]);
 	$email = test_input($_POST["email"]);
 	$regId = test_input($_POST["Rid"]);
+
 	
 	require("dbconfig.php");
 
@@ -40,10 +42,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	// saving it to db  "SQL INJECTION PRONE!"
+	// saving it to db, maybe "SQL INJECTION PRONE!"
     $sql = 'INSERT INTO doctor (name, email, number, regId, password) VALUES ("'.$name.'","' .$email.'","' .$number.'","' .$regId.'","' .$pwd.'")';
+
     if ($conn->query($sql)) {
-    	$last_id = mysqli_insert_id($conn);
+    	$last_id = mysqli_insert_id($conn);			// gets the recently used id of table
 	} else {
     	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}
